@@ -1,0 +1,170 @@
+<html>
+    <script>
+
+
+//WHILE PETLJA - Radi dokle god je uslov tacan
+    /*    
+        let i = 0;
+
+        while( i <= 10 ){   //while ( i < 11 )
+            console.log(i)
+            i += 1          //i = i + 1
+        }
+    */
+// FOR PETLJA -Koristi se dok znamo koliko puta zelimo ponavljanje
+        /*
+        for ( let i = 0; i < 11; i++){
+            console.log(i)
+        }
+        */
+
+// DO WHILE PETLJA
+/*
+        let a = 0;
+
+        do {
+            a = a + 1;
+            console.log(a)
+        } while (a <= 10)
+*/
+
+// OPERATORI
+
+// < - manje od
+// > - vece od
+// <= manje ili jednako
+// >= vece ili jednako
+
+// => - Arrow funkcija
+
+// = - dodeljivanje vrednosti
+
+// == - poredjenje uz konverziju tipova
+//5 == "5" // true
+//0 == false // true
+
+// === - Strogo poredjenje - Uporedjuje vrednost i tip
+//5 === "5" //false
+//0 === false //false
+
+// Zadatak 1: Ispisati sve parne brojeve od 0 do 100
+
+        for (let i = 0; i <= 100; i++){
+            if (i % 2 == 0){
+                console.log(i)
+            }
+        }
+
+// Zadatak 2: Ispisati sumu svih trocifrenih brojeva
+        // 100 => 1000
+
+        let suma = 0;
+
+        for(let i=100; i<1000; i++){
+            suma = suma + i;
+        }
+        console.log(suma)
+
+// Zadatak 3: 
+// Recimo da je normalan krvni pritisak za zene izmedju
+// 90 i 120, a za muskarce 100 i 130. Ako su date promenljive
+// pol i pritisak, napisati uslov koji ispituje da li je taj
+// pritisak normalan
+
+        pol = "a"
+        pritisak = 140
+
+        if (pol === "z") {
+            if (pritisak >= 90 && pritisak <= 120) {
+                console.log("Pritisak je normalan")
+            } else {
+                console.log("Pritisak nije normalan");
+            }
+        } 
+        else if (pol === "m") {
+            if (pritisak >= 100 && pritisak <= 130) {
+                console.log("Pritisak je normalan")
+            } else {
+                console.log("Pritisak nije normalan");
+            }
+        } 
+        else {
+            console.log("Nepoznat pol")
+        }
+
+
+// Zadatak 4: SWITCH
+        //Pretvori numericku vrednost dana u tekst
+        //1 => ponedeljak, 2 => utorak, 3 => sreda...
+
+        let dan = 1;
+        let imeDana;
+
+        switch (dan) {
+            case 1:
+                imeDana = "Ponedeljak";
+                break;
+            case 2:
+                imeDana = "Utorak";
+                break;
+            case 3:
+                imeDana = "Sreda";
+                break;
+            case 4:
+                imeDana = "Cetvrtak";
+                break;
+            case 5:
+                imeDana = "Petak";
+                break;
+            case 6:
+                imeDana = "Subota";
+                break;
+            case 7:
+                imeDana = "Nedelja";
+                break;
+            default:
+                imeDana = "Nepostojeci dan";
+        }
+        console.log(imeDana)
+
+
+// Isti zadatak kao gore, samo kao funkcija
+
+        function nazivDana(dan){
+            switch (dan) {
+            case 1:
+                return "Ponedeljak";
+            case 2:
+                return "Utorak";
+            case 3:
+                return "Sreda";
+            case 4:
+                return "Cetvrtak";
+            case 5:
+                return "Petak";
+            case 6:
+                return "Subota";
+            case 7:
+                return "Nedelja";
+            default:
+                return "Nepostojeci dan";
+            }
+        }
+
+        console.log(nazivDana(1));
+        console.log(nazivDana(3));
+        console.log(nazivDana(5));
+
+// REKURZIJA
+
+        function brojDoDeset(n = 1){
+            console.log(n)
+
+            if ( n < 10 ){
+                brojDoDeset(n + 1)
+            }
+        }
+
+        brojDoDeset();
+    </script>
+</html>
