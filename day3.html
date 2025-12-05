@@ -1,0 +1,171 @@
+<html>
+    <script>
+/*
+        //Zadatak 1:
+    //Napisati funkciju imaSamoglasnik(s) koja proverava da li dati string s
+    //sadrzi bar jedan samoglasnik (a, e, i, o, u).
+    //Funkcija treba da vrate true ako postoji samoglasnik, a false ako ne postoji.
+
+        function imaSamoglasnik(s) {
+            for(let i = 0; i < s.length; i++){
+                if (s[i] === 'a'){
+                    return true;
+                }
+                else if (s[i] === 'e'){
+                    return true;
+                }
+                else if (s[i] === 'i'){
+                    return true;
+                }
+                else if (s[i] === 'o'){
+                    return true;
+                }
+                else if (s[i] === 'u'){
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        console.log(imaSamoglasnik('rec'));
+*/
+
+
+/*
+        //NIZ
+                //  0, 1, 2, 3, 4
+        let nizA = [1, 2, 3, 4, 5];
+
+        console.log(nizA)
+        console.log(nizA[0])
+        console.log(nizA[2])
+
+
+        let nizB = [
+            [1, 2, 3],
+            [4, 5, 6, [1, 2, 3, 4], 8, 9],
+            [7, 8, 9]
+        ]
+
+        console.log(nizB)
+        console.log(nizB[1])
+        console.log(nizB[1][0])
+
+        let kutija = {
+            visina: 12,
+            sirina: 6,
+            dubina: 14
+        };
+
+        console.log(kutija)
+        console.log(kutija.visina)
+*/
+
+
+        //
+
+        function saberi(a, b){
+            return a + b;
+        }
+
+        console.log(saberi(5, 5))
+        console.log(saberi(10, 5))
+        console.log(saberi(1000, 0))
+        console.log(saberi(1000, -500))
+
+        //LAMBDA =>
+
+        let oduzmi = (a, b) => {
+            return a - b;
+        }
+
+        console.log(oduzmi(10, 5))
+
+        //////////////////////////////////////
+
+
+        //FUNKCIJA VISEG REDA
+        
+        let dupliraj = (a) => {
+            return a * 2;
+        }
+
+        function pozovi(fja, param) {
+            return fja(param)
+        }
+
+        console.log(pozovi(dupliraj, 25))
+
+        //Zadatak 2: Napravi funkciju koja prima argumente i racuna njihov prosek
+        
+        function prosek(...brojevi) {
+            let zbir = 0;
+
+            for (let i = 0; i < brojevi.length; i++){
+                zbir += brojevi[i]; //brojevi[10, 20, 30] brojevi[60]
+            }
+
+            return zbir / brojevi.length; //brojevi[60] / 3 elementa
+        }
+
+        console.log(prosek(10,20,30));
+        console.log(prosek(5, 8));
+
+        //Zadatak 3: Izracunaj ocene od 50 do 100 poena
+        // 51 do 60 = 6
+        // 61 do 70 = 7
+        // 71 do 80 = 8
+        // 81 do 90 = 9
+        // 91 do 100 = 10
+
+        function ocena(bodovi){
+            if (bodovi >= 51 && bodovi <= 60) {
+                return 6;
+            }
+            else if (bodovi >= 61 && bodovi <= 70) {
+                return 7;
+            }
+            else if (bodovi >= 71 && bodovi <= 80) {
+                return 8;
+            }
+            else if (bodovi >= 81 && bodovi <= 90) {
+                return 9;
+            }
+            else if (bodovi >= 91 && bodovi <= 100) {
+                return 10;
+            }
+            else {
+                return 5; // Sve ispod 51 je pad
+            }
+        }
+
+            alert("Dobili ste ocenu: " +
+                ocena(Number(prompt("Unesite bodove ")))
+            )
+
+
+    //Zadatak 4:
+//Napisati program koji:
+/*
+Od korisnika trazi broj studenata i za svakog studenta trazi unos ostvarenih bodova
+
+Kada se bodovi unesu, potrebno je izracunati ocenu za svakog studenta
+Funkcija treba da vrati niz ocena
+
+Na osnovu dobijenih ocena napisati funkciju koja racuna prosecnu ocenu
+*/
+
+    let n = Number(prompt("Unesite broj studenata: "));
+
+    let bodovi = [];
+
+    for (let i=0; i<n; i++){
+        bodovi[i] = Number(prompt("Unesite bodove za studenta " + (i + 1) + ":"))
+    }
+
+    let ocene = izracunajOceneZaStudente(...bodovi);
+
+    console.log("Prosecna ocena: " + izracunajOceneZaStudente(...ocene));
+
+    </script>
+</html>
