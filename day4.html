@@ -1,0 +1,123 @@
+<html>
+    <script>
+
+
+    // ZADATAK 1:
+/*
+        Napisati funkciju daLiJeSavrsen(n) koja za zadati broj
+        n vraca vrednost true ili false u zavisnosti od toga
+        da li je savrsen ili nije
+
+    Npr za n = 10, suma delilaca je 1+2+5=8 < 10 - broj nije savrsen
+    Npr za n = 28, suma delilaca je 1+2+4+7+14 = 28 - broj je savrsen
+
+    !! Broj je savrsen ako je jednak zbiru svojih pravih delioca (manjih od samog broja)
+
+    n % i == 0
+*/
+/*
+        function daLiJeSavrsen(n) {
+            //Provera da li je ceo broj
+            if (typeof (n) != 'number') {
+                return false;
+            }
+
+            let praviDelioci = [];
+
+            for (let i = 1; i < n; i++) {
+                if (n % i == 0) {
+                    praviDelioci.push(i);
+                }
+            }
+
+            let sum = 0;
+
+            for (let i = 0; i < praviDelioci.length; i++) {
+                sum = sum + praviDelioci[i];
+            }
+
+            if (sum == n) {
+                return true;
+            }
+
+            return false;
+        }
+
+        console.log(daLiJeSavrsen(6));
+        console.log(daLiJeSavrsen(10));
+        console.log(daLiJeSavrsen(28));
+        console.log(daLiJeSavrsen(50));
+
+
+    // ZADATAK 2:
+
+    // Napisati funkciju nadjiSveSavrsene(m, n) koja ispisuje sve savrsene brojeve
+    // izmedju m i n. Iskoristiti prethodno definisanu funkciju daLiJeSavrsen
+
+        function nadjiSveSavrsene(m, n) {
+            if (n < m){
+                return [];
+            }
+
+            let savrseni = [];
+            for (let i = m; i < n; i++) {
+                if(daLiJeSavrsen(i)) {
+                    savrseni.push(i);
+                }
+            }
+
+            return savrseni;
+        }
+
+        console.log(nadjiSveSavrsene(1, 10000));
+
+    // ZADATAK 3:
+
+    // Uzeti korisnicki input: Korisnik unese broj i povratna informacija kaze da li je
+    // broj savrsen (Alert)
+
+        function korisnikSavrsenBroj() {
+            let i = Number(prompt("Unesite broj: "));
+
+            if (i != NaN) {
+                if (daLiJeSavrsen(i)) {
+                    alert("Uneti broj je savrsen!")
+                } else {
+                    alert("Uneti broj nije savrsen!")
+                }
+            }
+            else {
+                alert("Uneta vrednost nije broj!");
+            } 
+        }
+
+        korisnikSavrsenBroj();
+*/
+    // ZADATAK 4:
+
+        /*
+            Napisati program koji za zadato n iscrtava sledeci sablon:
+            *
+            **
+            ***
+            ****
+            *****
+
+            U poslednjem redu da bude n zvezdica 
+        */
+
+        function jelka(n) {
+            for (let i = 1; i <= n; i++) {
+                let linija = "";
+
+                for (let j = 1; j <= i; j++){
+                    linija += "*";
+                }
+
+                console.log(linija);
+            }
+        }
+
+        jelka(5);
+    </script>
+</html>
