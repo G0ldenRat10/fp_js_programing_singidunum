@@ -1,0 +1,172 @@
+<html>
+    <script>
+
+        /*
+            OPERATORI
+
+            =
+            ==
+            ===
+            + - * 
+            / %
+
+            LOGICKI OPERATORI
+
+            && AND
+            || ILI 
+            !
+        
+        */
+       //PRVI ZADATAK
+/*
+            let p = 42;
+        {
+            p = 37
+            {
+                var q = 24;
+                console.log(q)
+            }
+        }
+        console.log(p)
+*/
+
+    //DRUGI ZADATAK
+/*
+        let a = 'a'
+        let a1 = '25'
+        let b = 12
+        let c = 0.123
+        let d = true
+
+        console.log(typeof(a))
+        console.log(typeof(b))
+        console.log(typeof(c))
+        console.log(typeof(d))
+
+        console.log(typeof(a1))
+        console.log(typeof(Number(a1)))
+
+    let a1 = '25'
+    console.log(typeof(Number(a1)))
+*/
+
+        //IF PETLJA
+/*
+    let a = 12
+
+    if (a > 10) {
+        console.log("a > 10")
+    }
+
+    if (a < 12){
+        console.log("a < 12")
+    }
+
+    if (a = 10) {
+        console.log("a >= 10")
+    }
+*/
+/*
+    let a = 5
+
+    if (a > 10) {
+        console.log("a > 10");
+    } else if (a < 10){
+        console.log("a < 10")
+    } else {
+        console.log("a = 10")
+    }
+*/
+
+        //SWITCH CASE
+/*
+    let con = 'a';
+
+    switch(con){
+        case 'a':
+            console.log("Condition == a")
+   //         break;
+        case 'b':
+            console.log("Condition == b")
+            break;
+        case 'c':
+            console.log("Condition == c")
+            break;
+        case 'd':
+            console.log("Condition == d")
+            break;
+        case 'e':
+            console.log("Condition == e")
+            break;
+        default:
+            console.log("Condition nije dat")
+            break;
+    }
+*/
+        //ARROW FUNKCIJA
+/*
+    let a = (a, b) => {
+        console.log("Ovo je funkcija a");
+        return 'a';
+    }
+
+    console.log(a('a', 'b'));
+*/
+
+
+        //REKURZIJA
+/*        
+    function f1(a) {
+        console.log(a)
+        if (a > 10) {
+            return 0;
+        }
+        f1(a + 1);
+    }
+    f1(0);
+*/
+        //PETLJE
+/*    
+    let i = 20;
+    while (i > 10) {
+        i--;
+        console.log(i);
+        break;
+    }
+
+    while (i > 10) {
+        i--;
+        break;          //BREAK PREKIDA PETLJU
+        console.log(i)
+    }
+
+    while (i > 10) {
+        i--;
+        if ( i % 2 == 0) {
+            continue;   //CONTINUE SKACE NA SLEDECU ITERACIJU
+        }
+        console.log(i);
+    }
+*/
+
+
+    for (let i = 0; i < 10 && i > 0; i++, console.log("Petlja je izvrsena")){
+        console.log(i)
+    }
+
+
+    //NIZOVI
+
+    let a = [1,2,3,4,5];
+    console.log(a[0])
+
+    let b = [
+        [1,2,3,4,5],
+        [1,2,3,4,5],
+        [1,2,3,4,5],
+        [1,2,3,4,5],
+    ];
+
+    console.log(b[0][2])
+    </script>
+</html>
