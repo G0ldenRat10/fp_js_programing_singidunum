@@ -1,0 +1,73 @@
+<html>
+    <script>
+
+        //SHALLOW COPY
+
+            let recept1 = {
+                naziv: "Lazanje",
+                sastojci: [
+                    {
+                        imeSastojka: "testo",
+                        kolicina: "500g"
+                    },
+                    {
+                        imeSastojka: "meso",
+                        kolicina: "250g"
+                    }
+                ],
+                priprema: "Isprziti meso, spremiti testo..."
+            };
+
+            console.log(recept1);
+            let recept2 = recept1;
+            console.log(recept2);
+
+            recept2.naziv = 'lazanje2';
+            console.log(recept1)
+            console.log(recept2)
+
+            let recept3 = Object.assign(recept1)
+            recept3.naziv = 'lazanje3'
+
+            console.log(recept1)
+            console.log(recept2)
+            console.log(recept3)
+
+            //DEEP COPY
+            let recept4 = JSON.parse(JSON.stringify(recept1))
+            console.log(recept4)
+
+            recept1.naziv = 'Pica'
+
+            console.log(recept1)
+            console.log(recept2)
+            console.log(recept3)
+            console.log(recept4)
+        
+
+            //Napravi objekat racunar i dodati mu:
+            // Cenu koja moze da se menja
+            //Proizvodjaca koji ne moze da se menja
+
+
+            let racunar = {};
+
+            Object.defineProperty(racunar, 'cena', {
+                value: 100000,
+                writable: true,
+                enumerable: true,
+                configurable: true
+            });
+
+            Object.defineProperty(racunar, 'proizvodjac', {
+                value: "Asus",
+                writable: false,
+                enumerable: true,
+                configurable: false
+            });
+
+            console.log(racunar.proizvodjac)
+            //racunar.proizvodjac = "Lenovo";
+            console.log(racunar.proizvodjac)
+    </script>
+</html>
