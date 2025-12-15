@@ -1,0 +1,161 @@
+<html>
+<script>
+
+    //1. Kompozicija funkcija (Rucno)
+
+    let povecajZa10 = (a) => a + 10; // 10 + 16 = 26
+    let dupliraj = (a) => a * 2; // 16
+    let kvadriraj = (a) => a * a; // 26 * 26 = 676
+
+    n = 8;
+
+    console.log(kvadriraj(povecajZa10(dupliraj(n))));
+
+    //2. Funkcija koja kombinuje 3 funkcije
+
+    function kombinujFunkcije(n, f1, f2, f3) {
+        return f3(f2(f1(n)))
+    }
+
+    console.log(
+        kombinujFunkcije(
+            8,
+            (a) => a * 3,
+            (a) => a / 10,
+            (a) => a * a
+        )
+    );
+
+    //3. Kombinovanje vise funkcija
+
+    function kombinujN(n, ...funkcije) {
+        let rezultat = n;
+        for (let i = 0; i < funkcije.length; i++) {
+            rezultat = funkcije[i](rezultat)
+        }
+        return rezultat
+    }
+
+    console.log(
+        kombinujN(
+            8,
+            (a) => a * 5,
+            (a) => a + 15,
+            (a) => a * a,
+            (a) => a - 2
+        )
+    )
+
+    //4. Funkcija za slanje poruke
+
+    let posaljiPoruku = (posaljilac, primalac, naslov, sadrzaj) => {
+        console.log(posaljilac + " salje poruku " + primalac);
+        console.log("Naslov: " + naslov);
+        console.log("Sadrzaj: " + sadrzaj);
+    }
+
+    posaljiPoruku("Pera", "Mika", "Pozdrav", "Cao Miko!")
+
+    //5. Funkcija koja vraca Funkciju
+
+    function pozdravZaPeru() {
+        return (posaljilac,
+            primalac = "Pera",
+            naslov = "Pozdrav",
+            sadrzaj = "Pozdrav Pero!") => {
+
+            console.log(posaljilac + " salje poruku " + primalac);
+            console.log("Naslov: " + naslov);
+            console.log("Sadrzaj: " + sadrzaj);
+        };
+    }
+    let posaljiPeri = pozdravZaPeru();
+    posaljiPeri("Bojan");
+
+    //ZADATAK: Napraviti funkciju za poruku OD Djure
+    function porukaOdDjure() {
+        return (primalac, naslov, sadrzaj, posaljilac = "Djura") => {
+            console.log(posaljilac + " salje poruku " + primalac);
+            console.log("Naslov: " + naslov);
+            console.log("Sadrzaj: " + sadrzaj);
+        };
+    }
+
+    let odDjure = porukaOdDjure();
+    odDjure("Steva", "Zdravo", "Dobar dan");
+
+    //6. Razbijanje jedne funkcije na vise manjih
+
+    let prikaziPosaljioca = (a) => a + " salje poruku ";
+    let prikaziPrimaoca = (a) => a + " prima poruku, ";
+    let prikaziNaslov = (a) => "Naslov poruke je: " + a + ", ";
+    let prikaziSadrzaj = (a) => "Sadrzaj poruke je: " + a;
+
+    function posaljiPorukuRazbijeno(a, b, c, d) {
+        return prikaziPosaljioca(a) + 
+                prikaziPrimaoca(b) +
+                prikaziNaslov(c) +
+                prikaziSadrzaj(d);
+    }
+
+    console.log(
+        posaljiPorukuRazbijeno("Ana", "Marija", "Pozdrav", "Cao zdravo")
+    );
+
+    //7. Napraviti rucni FILTER gde ce se izdvojiti samo parni brojevi iz niza
+
+    let niz = [2,5,10,3,8,15,12]
+
+    function samoParni(arr) {
+        let rezultat = [];
+
+        for(let i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 === 0) {
+                rezultat.push(arr[i]);
+            }
+        }
+        return rezultat;
+    }
+
+    console.log(samoParni(niz))
+
+    //8. Rucni MAP gde ce se niz podeliti sa 2
+
+    function podeliSaDva(arr) {
+        let rezultat = [];
+
+        for (let i=0; i < arr.length; i++) {
+            rezultat.push(arr[i] / 2);
+        }
+        return rezultat;
+    }
+
+    console.log(podeliSaDva([2, 10, 8]))
+
+    //9. Rucni REDUCE (suma)
+
+    function suma(arr) {
+        let zbir = 0;
+        for (let i = 0; i < arr.length; i++) {
+            zbir += arr[i];
+        }
+        return zbir;
+    }
+
+    console.log(suma([1,2,3,4,5]))
+
+    //10. MAP, FILTER, REDUCE kao Funkcija
+
+    let arr = [2,5,10,3,8,12]
+
+    let rezultat =
+                arr
+                .filter(x => x % 2 === 0)
+                .map(x => x/2)
+                .reduce((s, x) => s + x, 0)
+
+    console.log(rezultat)
+
+</script>
+
+</html>
