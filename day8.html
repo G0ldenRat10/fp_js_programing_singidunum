@@ -1,0 +1,130 @@
+<html>
+    <script>
+
+        //1.
+        function sum3(a,b,c){
+            return a+b+c;
+        }
+
+        console.log(sum3(1,2,3))
+
+        //2. Funkcija koja vraca funkciju - Curry
+
+        function sum4(a) {
+            return e = (b) => {
+                return f = (c) => {
+                    return a + b + c;
+                }
+            }
+        }
+        console.log(sum4(1)(2)(3));
+
+        //3. Viseslojna funkcija
+
+        let f1 = (n) => {
+            return f2 = () => {
+                return f3 = () => {
+                    return (2*n + 10)**2
+                }
+            }
+        }
+        console.log(f1(8)()());
+
+
+        //ZADATAK 1
+
+        //Koristeci FILTER, Izdvoj elemente iz zadatog niza koji su manji od 10
+        // Uraditi IMPERATIVNO I FUNKCIONALNO
+/*
+        let arrA = [4, 15, 1, 9, 10, 18, 22, 3, 6, 11]
+
+        //Imperativno
+        function a(arr) {
+            let arr2 = []
+            for(let i=0; i<arr.length; i++) {
+                if(arr[i] < 10) {
+                    arr2.push(arr[i])
+                }
+            }
+            return arr2
+        }
+        console.log(a(arr))
+
+        //Funkcionalno
+        console.log(arr.filter((a) => a<10))
+*/
+        //ZADATAK 2
+
+        //Koristeci REDUCE, pomnoziti sve elemente datog niza
+        // Uraditi IMPERATIVNO I FUNKCIONALNO
+/*
+        let arrB = [4, 16, 1, 9, 10]
+
+        //Imperativno
+
+        function b(arrB) {
+            p = arrB[0];
+            for(let i = 1; i < arrB.length; i++) {
+                p = p*arrB[i]
+            }
+            return p;
+        }
+        console.log(b(arrB))
+
+        //Funkcionalno
+
+        console.log(arrB.reduce((acc, value) => acc * value))
+*/
+        //ZADATAK 3
+
+        // Izracunati zbir kubova parnih brojeva vecih od 5
+        // Uraditi IMPERATIVNO I FUNKCIONALNO
+/*
+        //Imperativno
+        const arr = [1,2,3,4,5,6,7,8,9,10]
+
+        let sum = 0;
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > 5 && arr[i] % 2 === 0) {
+                sum += arr[i] ** 3;
+            }
+        }
+
+        console.log(sum);
+
+        //Funkcionalno
+
+        const suma = arr
+                        .filter(n => n > 5 && n % 2 === 0)
+                        .map(n => n ** 3)
+                        .reduce((acc, n) => acc + n, 0)
+
+        console.log(suma);
+*/
+        //ZADATAK 4
+
+        //Izracunati proizvod svih brojeva koji su deljivi sa 3, ali nisu deljivi sa 2
+        // Uraditi IMPERATIVNO I FUNKCIONALNO
+        
+        const arr = [1,2,3,4,5,6,7,9,12];
+
+        //Imperativno
+        let rezultat = 1;
+
+        for(let i = 0; i < arr.length; i++) {
+            if (arr[i] % 3 === 0 && arr[i] % 2 !== 0) {
+                rezultat *= arr[i]
+            }
+        }
+
+        console.log(rezultat)
+
+        //Funkcionalno
+        const rez = arr
+                    .filter(n => n % 3 === 0 && n % 2 !== 0)
+                    .reduce((acc, n) => acc * n, 1)
+        console.log(rez)
+
+    </script>
+</html>
