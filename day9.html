@@ -1,0 +1,130 @@
+<html>
+    <script>
+/*
+        //1. ZADATAK
+        // Na zadati niz, izdvojiti sve brojeve koji su veci od 5 i parni. 
+        // Dobijene brojeve kvadrirati i izracunati zbir kvadrata tih brojeva
+        // Koristeci map, filter i reduce funkcije
+
+        let arr = [2, 4, 7, 8, 10, 3, 6, 12, 18]
+
+        console.log(arr.filter((a) => (a > 5) && a % 2 == 0));
+
+        console.log(arr.filter((a) => (a > 5) && a % 2 == 0).map((a) => a ** 2));
+
+        console.log(
+            arr
+                .filter((a) => (a > 5) && a % 2 == 0)
+                .map((a) => a ** 2)
+                .reduce((acc, v) => acc + v)
+        )
+*/
+        //------------------------
+/*
+        // Rad sa stringovima i nizovima reci
+
+        let a = "jabuka"
+        console.log(a.startsWith('j'))
+
+        const reci = ["jabuka", "automobil", "banana", "avion", "grad"]
+
+        console.log(reci.filter((a) => a.startsWith('a')))
+
+        console.log(reci.filter((a) => a.startsWith('a')).reduce((acc, v) => acc + v))
+
+        console.log(reci.filter((a) => a.startsWith('a')).reduce((acc, v) => acc + v).length)
+*/
+/*
+        //2. ZADATAK
+        // Dat je niz brojeva i dodatni broj. Napisati funkciju koja dodaje broj u 
+        // postojeci niz korisenjem metode push
+
+        niz = [3, 7, 9, 15]
+        broj = 6
+
+        function dodajBroj() {
+            niz.push(broj);
+            console.log(niz)
+        }
+        dodajBroj()
+*/
+/*
+        //3. ZADATAK
+        // Dat je niz brojeva, potrebno je napisati funkciju koja prima broj i niz kao
+        // argumente, vraca novi niz koji sadrzi sve elemente originalnog niza + dodatni broj
+        // Ne menja se originalni niz
+        // Koristiti for petlju
+
+        niz = [3, 7, 9, 15]
+        broj = 6
+
+        function dodajBroj(broj, arr) {
+            let arr2 = [];
+            for (let i = 0; i < arr.length; i++){
+                arr2.push(arr[i])
+            }
+            arr2.push(broj)
+            return arr2
+        }
+        console.log(dodajBroj(6, niz))
+*/
+/*
+        //4. ZADATAK
+
+        //Dat je niz objekata koji predstavjaju gradove
+        //Svaki grad ima sledeca polja: ime, zemlja, kontinent, broj stanovnika
+
+        //1. Izdvojiti sve gradove u Africi koji imaju manje od 5 miliona stanovnika i
+        //ispisati njihova imena
+
+        //2. Izdvojiti sve gradove u Aziji i ispisati imena drzava u kojima se nalaze
+
+        let gradovi = [
+            {ime: "Tokyo", zemlja: "Japan", kontinent: "Azija", brStanovnika: 14000000},
+            {ime: "Capetown", zemlja: "Juzna Afrika", kontinent: "Afrika", brStanovnika: 4500000},
+            {ime: "Sydney", zemlja: "Australija", kontinent: "Australija", brStanovnika: 6245000},
+            {ime: "Kairo", zemlja: "egipat", kontinent: "Afrika", brStanovnika: 9800000}
+        ]
+
+            //Ispis gradova u Africi sa manje od 5 miliona stanovnika
+        console.log(
+            gradovi
+                .filter(g => g.kontinent === "Afrika" && g.brStanovnika < 5000000)
+                .map(g => g.ime)
+        )
+
+        console.log(
+            gradovi
+                .filter(g => g.kontinent === "Azija")
+                .forEach(g => console.log(g.zemlja))
+        )
+*/
+
+        //5. ZADATAK
+
+        //1. Izdvojiti sve evropske drzave koje imaju manje od 30 miliona stanovnika
+        //i ispisati njihove nazive u konzoli
+
+        //2. Izdvojiti sve drzave koje se nalaze u Aziji i ispisati njihovu povrsinu
+
+        let drzave = [
+            {naziv: "Nemacka", kontinent: "Evropa", brStanovnika: 80000000, povrsina: 375000},
+            {naziv: "Norveska", kontinent: "Evropa", brStanovnika: 25000000, povrsina: 385000},
+            {naziv: "Brazil", kontinent: "Juzna Amerika", brStanovnika: 212000000, povrsina: 850000},
+            {naziv: "Japan", kontinent: "Azija", brStanovnika: 125000000, povrsina: 400000},
+        ]
+
+        console.log(
+            drzave
+                .filter(d => d.kontinent === "Evropa" && d.brStanovnika < 30000000)
+                .forEach(d => console.log(d.naziv))
+        )
+
+        console.log(
+            drzave
+                .filter(d => d.kontinent === "Azija")
+                .forEach(d => console.log(d.povrsina))
+        )
+
+    </script>
+</html>
