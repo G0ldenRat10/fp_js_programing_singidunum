@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="sr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kviz Funkcionalno</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 12px;
+        }
+
+        .box {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 12px;
+            margin: 10px 0;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        input {
+            padding: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Kviz </h1>
+
+    <div class="box row">
+        <div id="meta"></div>
+        <div id="score"></div>
+        <div id="progress"></div>
+    </div>
+
+    <div class="box">
+        <label>Ime: </label>
+        <input id="nameInput" placeholder="npr. Bojan" />
+        <small>(Ime se sacuva kada kliknes van polja ili enter)</small>
+    </div>
+
+    <div class="box" id="app"></div>
+
+
+
+    <script>
+        //1. Pitanja (Podaci)
+
+        const QUESTIONS = [
+            { id: "q1", text: "Koji metod vraca NOVI niz?", options: ["map()", "filter()", "reduce()", "forEach()"], correct: 1 },
+            { id: "q2", text: "Sta vraca funkcija reduce()", options: ["Uvek niz", "Uvek objekat", "Akumulator (bilo sta)", "Nista"], correct: 2 },
+            { id: "q3", text: "Sta je cista funkcija", options: ["Menja se globalno", "Random izlaz", "Isti ulaz = isti izlaz", "Brza funkcija"], correct: 2 }
+        ];
+
+        //2. Stanje
+        const initialState = () => ({
+            name: "",
+            i: 0,
+            answers: [],
+            done: false
+        });
+
+        let state = initialState();
+
+        //3. Reducer
+        function reducer(s, a) {
+            if (a.type === "SET_NAME") {
+                return { ...s, name: a.value };
+            }
+
+            if (a.type === "ANSWER") {
+                if (s.done) return s;
+
+                const q = QUESTIONS[s.i];
+
+                const already = s.answers.some(x => x.id === q.id);
+                if (already) return s;
+
+                const ok = (a.picked === q.correct);
+                const answers = [...s.answers, { id: q.id, picked: a.picked, ok }]
+
+                const nextI = s.i + 1;
+                const done = nextI >= QUESTIONS.length;
+
+                return { ...s, answers, i: done ? s.i : nextI, done }
+            }
+
+            if (a.type === "RESTART") {
+                return initialState();
+            }
+
+            return s;
+        }
+
+        //4. Dispatch - Jedino mesto koje menja State + poziva Render
+        function dispatch(action) {
+            state = reducer(state, action);
+            render();
+        }
+
+        //Helper za rezultat
+        function scoreOf(answers) {
+            return answers.reduce((acc, x) => acc + (x.ok ? 1 : 0), 0);
+        }
+
+        //5. Render
+        const app = document.getElementById("app");
+        const meta = document.getElementById("meta");
+        const score = document.getElementById("score");
+        const progress = document.getElementById("progress");
+        const nameInput = document.getElementById("nameInput");
+
+        nameInput.addEventListener("blur", () => dispatch({ type: "SET_NAME", value: nameInput.value }));
+        nameInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                dispatch({ type: "SET_NAME", value: nameInput.value });
+                nameInput.blur();
+            }
+        });
+
+        function render() {
+            const answered = state.answers.length;
+            const sc = scoreOf(state.answers);
+
+            meta.textContent = "Igrac: " + (state.name || "Igrac");
+            score.textContent = "Score: " + sc + "/" + answered;
+
+            if (state.done) {
+                progress.textContent = "Zavrseno";
+                app.innerHTML = `
+                <h2>Rezultat: ${sc}/${QUESTIONS.length}</h2>
+                <button id="restartBtn">Igraj opet</button>
+                `;
+                document.getElementById("restartBtn").onclick = () => dispatch({ type: "RESTART" });
+                return;
+            }
+
+            const q = QUESTIONS[state.i];
+            progress.textContent = "Pitanje: " + (state.i + 1) + "/" + QUESTIONS.length;
+
+            //Prikaz pitanja + dugmad za odgovore
+
+            app.innerHTML = `
+            <h2>${q.text}</h2>
+            <div id="opts"></div>
+            <small> Izaberi odgovor </small>
+            `;
+
+            const opts = document.getElementById("opts");
+            q.options.forEach((text, idx) => {
+                const btn = document.createElement("button")
+                btn.textContent = String.fromCharCode(65 + idx) + ". " + text;
+                btn.onclick = () => dispatch({ type: "ANSWER", picked: idx });
+                opts.appendChild(btn);
+            });
+        }
+        render();
+    </script>
+
+</body>
+
+
+</html>
